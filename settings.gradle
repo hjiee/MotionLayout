@@ -1,2 +1,2 @@
-include ':app'
-rootProject.name = "MotionLayout"
+include ':constraintlayout', 'motionlayout'
+include ':motionlayoutintegrations'
