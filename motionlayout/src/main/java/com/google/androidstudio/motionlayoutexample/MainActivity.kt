@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.androidstudio.motionlayoutexample.fragmentsdemo.FragmentExample2Activity
 import com.google.androidstudio.motionlayoutexample.fragmentsdemo.FragmentExampleActivity
 import com.google.androidstudio.motionlayoutexample.histogramdemo.HistogramActivity
+import com.google.androidstudio.motionlayoutexample.myyuotube.YouTubeActivity
 import com.google.androidstudio.motionlayoutexample.viewpagerdemo.ViewPagerActivity
 import com.google.androidstudio.motionlayoutexample.viewpagerdemo.ViewPagerActivity2
 import com.google.androidstudio.motionlayoutexample.youtubedemo.YouTubeDemoActivity
@@ -21,6 +22,12 @@ class MainActivity : AppCompatActivity(), CompoundButton.OnCheckedChangeListener
     private var doShowPaths = false
 
     private val dataset: Array<DemosAdapter.Demo> = arrayOf(
+            DemosAdapter.Demo("Sample1", "click animate", R.layout.motion1),
+            DemosAdapter.Demo("Sample2", "click expaned", R.layout.motion2),
+            DemosAdapter.Demo("Sample3", "click target expaned", R.layout.motion3),
+            DemosAdapter.Demo("Sample4", "click target expaned", R.layout.motion4),
+            DemosAdapter.Demo("Sample5", "drag animate", YouTubeActivity::class.java),
+            DemosAdapter.Demo("", "", R.layout.motion1),
             DemosAdapter.Demo("Basic Example (1/3)", "Basic motion example using referenced ConstraintLayout files", R.layout.motion_01_basic),
             DemosAdapter.Demo("Basic Example (2/3)", "Basic motion example using ConstraintSets defined in the MotionScene file", R.layout.motion_02_basic),
             DemosAdapter.Demo("Basic Example (3/3)", "Basic motion example same as 2, but autoComplete is set to false in onSwipe", R.layout.motion_02_basic_autocomplete_false),
