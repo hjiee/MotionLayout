@@ -19,11 +19,12 @@
         motion:constraintSetEnd="@+id/end"
         motion:constraintSetStart="@+id/start"
         motion:duration="1000"
-        motion:motionInterpolator="linear">
+        motion:motionInterpolator="easeIn">
 
         <OnSwipe
             motion:dragDirection="dragUp"
-            motion:touchAnchorId="@+id/top_image"
+            motion:touchRegionId="@+id/cl_container"
+            motion:touchAnchorId="@+id/cl_container"
             motion:touchAnchorSide="bottom" />
 
 <!--        <KeyFrameSet>-->
@@ -63,17 +64,31 @@
     </Transition>
 
     <ConstraintSet android:id="@id/start">
-        <Constraint
-            android:id="@+id/motionLayout" >
 
-        </Constraint>
         <Constraint
-            android:id="@id/top_image"
+            android:id="@+id/cl_container"
             android:layout_width="0dp"
             android:layout_height="320dp"
             motion:layout_constraintEnd_toEndOf="parent"
             motion:layout_constraintStart_toStartOf="parent"
-            motion:layout_constraintTop_toTopOf="parent" />
+            motion:layout_constraintTop_toTopOf="parent"/>
+
+        <Constraint
+            android:id="@id/top_image"
+            android:layout_width="0dp"
+            android:layout_height="320dp"
+            motion:layout_constraintEnd_toEndOf="@+id/cl_container"
+            motion:layout_constraintStart_toStartOf="@+id/cl_container"
+            motion:layout_constraintTop_toTopOf="@+id/cl_container" />
+
+        <Constraint
+            android:id="@id/recyclerview_container"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            motion:layout_constraintBottom_toBottomOf="parent"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintTop_toBottomOf="@id/cl_container" />
 
         <Constraint
             android:id="@id/recyclerview_front"
@@ -82,7 +97,7 @@
             motion:layout_constraintBottom_toBottomOf="parent"
             motion:layout_constraintEnd_toEndOf="parent"
             motion:layout_constraintStart_toStartOf="parent"
-            motion:layout_constraintTop_toBottomOf="@id/top_image" />
+            motion:layout_constraintTop_toBottomOf="@+id/cl_container" />
 
         <Constraint android:id="@id/image_play">
             <PropertySet motion:alpha="0" />
@@ -104,29 +119,45 @@
     <ConstraintSet android:id="@id/end">
 
         <Constraint
-            android:id="@+id/motionLayout">
-            <CustomAttribute
-                motion:customColorValue="@android:color/transparent"/>
-        </Constraint>
+            android:id="@+id/cl_container"
+            android:layout_width="0dp"
+            android:layout_height="54dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginBottom="2dp"
+            motion:layout_constraintBottom_toBottomOf="parent"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintStart_toStartOf="parent"/>
+
         <Constraint
             android:id="@id/top_image"
             android:layout_width="0dp"
             android:layout_height="54dp"
             android:layout_marginTop="2dp"
             android:layout_marginBottom="2dp"
-            motion:layout_constraintBottom_toBottomOf="parent"
+            motion:layout_constraintBottom_toBottomOf="@+id/cl_container"
             motion:layout_constraintDimensionRatio="H,1:2.5"
-            motion:layout_constraintStart_toStartOf="parent" />
+            motion:layout_constraintStart_toStartOf="@+id/cl_container" />
+
+        <Constraint
+            android:id="@id/recyclerview_container"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            motion:layout_constraintTop_toBottomOf="parent"
+            motion:layout_constraintEnd_toEndOf="@+id/cl_container"
+            motion:layout_constraintStart_toStartOf="@+id/cl_container" />
 
         <Constraint
             android:id="@id/recyclerview_front"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:alpha="0"
-            motion:layout_constraintBottom_toBottomOf="@id/top_image"
-            motion:layout_constraintEnd_toEndOf="@id/top_image"
-            motion:layout_constraintStart_toStartOf="@id/top_image"
-            motion:layout_constraintTop_toBottomOf="@id/top_image" />
+            motion:layout_constraintBottom_toBottomOf="@+id/cl_container"
+            motion:layout_constraintEnd_toEndOf="@+id/cl_container"
+            motion:layout_constraintStart_toStartOf="@+id/cl_container"
+            motion:layout_constraintTop_toBottomOf="@+id/cl_container" />
 
         <Constraint android:id="@id/image_play">
             <PropertySet motion:alpha="1" />

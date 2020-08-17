@@ -30,15 +30,21 @@ import com.google.androidstudio.motionlayoutexample.youtubedemo.YouTubeDemoViewH
 
 class FrontPhotosAdapter : RecyclerView.Adapter<YouTubeDemoViewHolder>() {
 
+    var itemClickListener : ((YouTubeDemoViewHolder) -> Unit)? = null
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): YouTubeDemoViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         val itemView = inflater.inflate(viewType, parent, false)
-        return when (viewType) {
+        val holder = when (viewType) {
             R.layout.motion_24_recyclerview_expanded_text_header -> TextHeaderViewHolder (itemView)
             R.layout.motion_24_recyclerview_expanded_text_description -> TextDescriptionViewHolder (itemView)
             R.layout.motion_24_recyclerview_expanded_row -> CatRowViewHolder(itemView)
             else -> throw IllegalStateException("Unknown viewType $viewType")
         }
+        itemView.setOnClickListener {
+            itemClickListener?.invoke(holder)
+        }
+        return holder
     }
 
     override fun onBindViewHolder(holder: YouTubeDemoViewHolder, position: Int) {
